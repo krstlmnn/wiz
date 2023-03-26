@@ -37,7 +37,7 @@ init(nil: ref Draw->Context, args: list of string) {
 	stderr := sys->fildes(2);
 
 	arg->init(args);
-	arg->setusage("wiz [ -d dim ] [ -w kelvin ] addr");
+	arg->setusage("wiz [ -d dim ] [ -c r g b ] | [ -w kelvin ] addr");
 
 	json->init(bufio);
 	params := json->jvobject(nil);
@@ -47,6 +47,10 @@ init(nil: ref Draw->Context, args: list of string) {
 
 	while((c := arg->opt()) != 0) {
 		case c {
+		'c' =>
+			params.set("r", json->jvint(int arg->earg()));
+			params.set("g", json->jvint(int arg->earg()));
+			params.set("b", json->jvint(int arg->earg()));
 		'd' =>
 			params.set("dimming", json->jvint(int arg->earg()));
 		'w' =>

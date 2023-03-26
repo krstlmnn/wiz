@@ -1,5 +1,5 @@
 Control WiZ smartlights from Inferno
 
 ```
-usage: wiz [ -d dim ] [ -w kelvin ] addr
+usage: wiz [ -d dim ] [ -c r g b ] | [ -w kelvin ] addr
 ```
